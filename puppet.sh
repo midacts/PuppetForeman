@@ -3,6 +3,7 @@
 # Author: John McCarthy
 # Date: July 24, 2013
 #
+#
 #------------------------------------------------------
 ######## FUNCTIONS ########
 function setHostname()
@@ -107,7 +108,7 @@ function doAll()
 		installForeman
 	fi
 	echo -e '\e[01;37;42mWell done! you have completed you Puppet Master and Foreman Installation.\e[0m'
-	echo -e '\e[01;37;42mProceed to your Foreman web UI, http://fqdn:8443 \e[0m'
+	echo -e '\e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
 	exit 0
 }
 # Check privileges
