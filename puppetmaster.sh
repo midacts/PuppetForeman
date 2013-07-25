@@ -124,7 +124,7 @@ case "$go" in
 		puppetRepos ;;
 	puppet)
 		installPuppet ;;
-	enable)
+	enablePuppet)
 		enablePuppet ;;
 	foremanRepos)
 		foremanRepos ;;
