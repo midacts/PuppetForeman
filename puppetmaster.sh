@@ -1,5 +1,5 @@
 #!/bin/bash
-# Puppet Install with The Foreman 1.1 on Debian Squeeze
+# Puppet Master Install with The Foreman 1.1 on Debian Wheezy
 # Author: John McCarthy
 # Date: July 24, 2013
 #
