@@ -115,7 +115,7 @@ function doAll()
 # Check privileges
 [ $(whoami) == "root" ] || die "You need to run this script as root."
 # Welcome to the script
-echo -e '\e[01;37;42m Welcome to Midacts Mystery! \e[0m'
+echo -e '\e[01;37;42m Welcome to Midacts Mystery\'s Puppet Master Installer! \e[0m'
 
 case "$go" in
 	hostname)
