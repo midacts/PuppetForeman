@@ -37,7 +37,7 @@ function enablePuppet()
 }
 function foremanRepos()
 {
-echo '+++ Getting repositories...'
+	echo '+++ Getting repositories...'
 	echo "deb http://deb.theforeman.org/ squeeze stable" > /etc/apt/sources.list.d/foreman.list
 	wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
 	apt-get update
@@ -47,7 +47,7 @@ function installForeman()
 {
 	echo '+++ Installing The Foreman...'
 	apt-get install foreman-installer -y
-	echo "The FOreman Installer has been downloaded!"
+	echo "The Foreman Installer has been downloaded!"
 	echo
 	echo "Initializing The Foreman Installer..."
 	sleep 1
