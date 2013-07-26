@@ -14,6 +14,7 @@ function setHostname()
 	Hostname=`hostname`
 	FQDN=`hostname -f`
 	echo -e "127.0.0.1	localhost		localhosts.localdomain\n$IP	$FQDN	$Hostname	puppet" > /etc/hosts
+	
 }
 function puppetRepos()
 {
@@ -21,19 +22,19 @@ function puppetRepos()
 	wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
 	dpkg -i puppetlabs-release-wheezy.deb
 	apt-get update
-	echo "The Latest Puppet Repos have been acquired!"
+	echo -e '\e[01;37;42mThe Latest Puppet Repos have been acquired!\e[0m'
 }
 function installPuppet()
 {
 	echo '+++ Installing Puppet Master...'
 	apt-get install puppetmaster -y
-	echo "The Puppet Master has been installed!"
+	echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
 {
 	echo '+++ Enabling Puppet Master Service...'
 	puppet resource service puppetmaster ensure=running enable=true
-	echo "The Puppet Master Service has been initiated!"
+	echo -e '\e[01;37;42mThe Puppet Master Service has been initiated!\e[0m'
 }
 function foremanRepos()
 {
@@ -41,13 +42,13 @@ function foremanRepos()
 	echo "deb http://deb.theforeman.org/ squeeze stable" > /etc/apt/sources.list.d/foreman.list
 	wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
 	apt-get update
-	echo "The Latest Foreman Repos have been acquired!"
+	echo -e '\e[01;37;42mThe Latest Foreman Repos have been acquired!\e[0m'
 }
 function installForeman()
 {
 	echo '+++ Installing The Foreman...'
 	apt-get install foreman-installer -y
-	echo "The Foreman Installer has been downloaded!"
+	echo -e '\e[01;37;42mThe Foreman Installer has been downloaded!\e[0m'
 	echo
 	echo "Initializing The Foreman Installer..."
 	sleep 1
@@ -63,10 +64,10 @@ function installForeman()
 	sleep .5
 	echo "We"
 	sleep .5
-	echo "G O  ! ! ! !"
+	echo -e '\e[01;37;42mG O  ! ! ! !\e[0m'
 	ruby /usr/share/foreman-installer/generate_answers.rb
 	service apache2 restart
-	echo "The Foreman has been installed!"
+	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
 	echo "Foreman Default Credentials:"
 	echo "Username: admin"
 	echo "Password: changeme"
