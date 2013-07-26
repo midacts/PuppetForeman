@@ -111,7 +111,7 @@ function doAll()
 	if [ "$yesno" = "y" ]; then
 		installForeman
 	fi
-	echo -e '\e[01;37;42mWell done! you have completed you Puppet Master and Foreman Installation.\e[0m'
+	echo -e '\e[01;37;42mWell done! you have completed your Puppet Master and Foreman Installation.\e[0m'
 	echo -e '\e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
 	exit 0
 }
