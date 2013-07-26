@@ -51,6 +51,7 @@ function installForeman()
 	echo -e '\e[01;37;42mThe Foreman Installer has been downloaded!\e[0m'
 	echo
 	echo "Initializing The Foreman Installer..."
+	echo "-------------------------------------"
 	sleep 1
 	echo "Select"
 	sleep 1
@@ -59,6 +60,7 @@ function installForeman()
 	echo "Three"
 	sleep 1
 	echo "Times"
+	echo 
 	sleep .5
 	echo "Here"
 	sleep .5
