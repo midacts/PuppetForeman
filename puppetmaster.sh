@@ -18,7 +18,7 @@ function setHostname()
 function puppetRepos()
 {
 	echo '+++ Getting repositories...'
-	wget http://apt.puppetlabs.com/puppetlabs-release-squeeze.deb
+	wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
 	dpkg -i puppetlabs-release-squeeze.deb
 	apt-get update
 	echo "The Latest Puppet Repos have been acquired!"
