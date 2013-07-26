@@ -76,42 +76,43 @@ function installForeman()
 }
 function doAll()
 {
-	echo -e "\e[36m=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)\e[0m"
+	echo -e "\e[33m=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		setHostname
 	fi
 
-	echo -e "\e[36m=== Get Latest Puppet Repos ? (y/n)\e[0m"
+	echo -e "\e[33m=== Get Latest Puppet Repos ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		puppetRepos
 	fi
 
-	echo -e "\e[36m=== Install Puppet Master ? (y/n)\e[0m"
+	echo -e "\e[33m=== Install Puppet Master ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		installPuppet
 	fi
 
-	echo -e "\e[36m=== Enable Puppet Master Service ? (y/n)\e[0m"
+	echo -e "\e[33m=== Enable Puppet Master Service ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		enablePuppet
 	fi
 
-	echo -e "\e[36m=== Get Latest Foreman Repos ? (y/n)\e[0m"
+	echo -e "\e[33m=== Get Latest Foreman Repos ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		foremanRepos
 	fi
 
-	echo -e "\e[36m=== Install The Foreman ? (y/n)\e[0m"
+	echo -e "\e[33m=== Install The Foreman ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		installForeman
 	fi
 	echo -e '\e[01;37;42mWell done! you have completed your Puppet Master and Foreman Installation.\e[0m'
+	echo
 	echo -e '\e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
 	exit 0
 }
