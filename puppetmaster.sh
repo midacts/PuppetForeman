@@ -76,37 +76,37 @@ function installForeman()
 }
 function doAll()
 {
-	echo "=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)"
+	echo -e "\e[36m=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		setHostname
 	fi
 
-	echo "=== Get Latest Puppet Repos ? (y/n)"
+	echo -e "\e[36m=== Get Latest Puppet Repos ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		puppetRepos
 	fi
 
-	echo "=== Install Puppet Master ? (y/n)"
+	echo -e "\e[36m=== Install Puppet Master ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		installPuppet
 	fi
 
-	echo "=== Enable Puppet Master Service ? (y/n)"
+	echo -e "\e[36m=== Enable Puppet Master Service ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		enablePuppet
 	fi
 
-	echo "=== Get Latest Foreman Repos ? (y/n)"
+	echo -e "\e[36m=== Get Latest Foreman Repos ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		foremanRepos
 	fi
 
-	echo "=== Install The Foreman ? (y/n)"
+	echo -e "\e[36m=== Install The Foreman ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		installForeman
