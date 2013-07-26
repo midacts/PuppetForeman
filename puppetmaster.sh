@@ -73,7 +73,7 @@ function installForeman()
 }
 function doAll()
 {
-	echo "=== Set Machine's Hostname to for Puppet Runs ? [RECOMMENDED] (y/n)"
+	echo "=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		setHostname
