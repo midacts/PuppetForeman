@@ -14,7 +14,7 @@ function setHostname()
 	Hostname=`hostname`
 	FQDN=`hostname -f`
 	echo -e "127.0.0.1	localhost		localhosts.localdomain\n$IP	$FQDN	$Hostname	puppet" > /etc/hosts
-	
+
 }
 function puppetRepos()
 {
@@ -70,6 +70,7 @@ function installForeman()
 	ruby /usr/share/foreman-installer/generate_answers.rb
 	service apache2 restart
 	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
+	echo
 	echo "Foreman Default Credentials:"
 	echo "Username: admin"
 	echo "Password: changeme"
@@ -111,16 +112,28 @@ function doAll()
 	if [ "$yesno" = "y" ]; then
 		installForeman
 	fi
-	echo -e '\e[01;37;42mWell done! you have completed your Puppet Master and Foreman Installation.\e[0m'
 	echo
-	echo -e '\e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
+	echo
+	echo -e '   \e[01;37;42mWell done! You have completed your Puppet Master and Foreman Installation!\e[0m'
+	echo
+	echo -e '                  \e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
+	echo
+	echo
+	echo -e '                            \e[37m########################\e[0m'
+	echo -e '                            \e[37m#\e[0m \e[31mI Corinthians 15:1-4\e[0m \e[37m#\e[0m'
+	echo -e '                            \e[37m########################\e[0m'
+	echo
+	echo
 	exit 0
 }
 # Check privileges
 [ $(whoami) == "root" ] || die "You need to run this script as root."
 # Welcome to the script
-echo -e "\e[01;37;42m Welcome to Midacts Mystery's Puppet Master Installer! \e[0m"
-
+echo
+echo
+echo -e '             \e[01;37;42mWelcome to Midacts Mystery'\''s Puppet Master Installer!\e[0m'
+echo
+echo
 case "$go" in
 	hostname)
 		setHostname ;;
