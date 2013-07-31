@@ -76,36 +76,42 @@ function installForeman()
 }
 function doAll()
 {
+	echo
 	echo -e "\e[33m=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		setHostname
 	fi
 
+	echo
 	echo -e "\e[33m=== Get Latest Puppet Repos ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		puppetRepos
 	fi
 
+	echo
 	echo -e "\e[33m=== Install Puppet Master ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		installPuppet
 	fi
 
+	echo
 	echo -e "\e[33m=== Enable Puppet Master Service ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		enablePuppet
 	fi
 
+	echo
 	echo -e "\e[33m=== Get Latest Foreman Repos ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
 		foremanRepos
 	fi
 
+	echo
 	echo -e "\e[33m=== Install The Foreman ? (y/n)\e[0m"
 	read yesno
 	if [ "$yesno" = "y" ]; then
@@ -118,9 +124,9 @@ function doAll()
 	echo -e '                  \e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
 	echo
 	echo
-	echo -e '                            \e[37m########################\e[0m'
-	echo -e '                            \e[37m#\e[0m \e[31mI Corinthians 15:1-4\e[0m \e[37m#\e[0m'
-	echo -e '                            \e[37m########################\e[0m'
+	echo -e '                            \e[01;37m########################\e[0m'
+	echo -e '                            \e[01;37m#\e[0m \e[31mI Corinthians 15:1-4\e[0m \e[01;37m#\e[0m'
+	echo -e '                            \e[01;37m########################\e[0m'
 	echo
 	echo
 	exit 0
