@@ -17,7 +17,7 @@ function setHostname()
 }
 function puppetRepos()
 {
-	echo '+++ Getting repositories...'
+	echo -e '\e[01;34m+++ Getting repositories...\e[0m'
 	wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
 	dpkg -i puppetlabs-release-wheezy.deb
 	apt-get update
@@ -25,54 +25,50 @@ function puppetRepos()
 }
 function installPuppet()
 {
-	echo '+++ Installing Puppet Master...'
+	echo -e '\e[01;34m+++ Installing Puppet Master...\e[0m'
 	apt-get install puppetmaster -y
 	echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
 {
-	echo '+++ Enabling Puppet Master Service...'
+	echo -e '\e[01;34m+++ Enabling Puppet Master Service...\e[0m'
 	puppet resource service puppetmaster ensure=running enable=true
 	echo -e '\e[01;37;42mThe Puppet Master Service has been initiated!\e[0m'
 }
 function foremanRepos()
 {
-	echo '+++ Getting repositories...'
-	echo "deb http://deb.theforeman.org/ squeeze stable" > /etc/apt/sources.list.d/foreman.list
+	echo -e '\e[01;34m+++ Getting repositories...\e[0m'
+	echo "deb http://deb.theforeman.org/ wheezy stable" > /etc/apt/sources.list.d/foreman.list
 	wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
 	apt-get update
 	echo -e '\e[01;37;42mThe Latest Foreman Repos have been acquired!\e[0m'
 }
 function installForeman()
 {
-	echo '+++ Installing The Foreman...'
+	echo -e '\e[01;34m+++ Installing The Foreman...\e[0m'
 	apt-get install foreman-installer -y
 	echo -e '\e[01;37;42mThe Foreman Installer has been downloaded!\e[0m'
 	echo
-	echo "Initializing The Foreman Installer..."
+	echo -e '\e[01;34mInitializing The Foreman Installer...\e[0m'
 	echo "-------------------------------------"
 	sleep 1
-	echo "Select"
+	echo -e '\e[33mMake any additional changes you would like\e[0m'
 	sleep 1
-	echo "Yes"
+	echo -e '\e[33mSelect option "5" and hit ENTER to run the install\e[0m'
 	sleep 1
-	echo "Three"
-	sleep 1
-	echo "Times"
 	echo 
+	echo -e '\e[97mHere\e[0m'
 	sleep .5
-	echo "Here"
+	echo -e '\e[97mWe\e[0m'
 	sleep .5
-	echo "We"
-	sleep .5
-	echo -e '\e[01;37;42mG O  ! ! ! !\e[0m'
-	ruby /usr/share/foreman-installer/generate_answers.rb
+	echo -e '\e[01;97;42mG O  ! ! ! !\e[0m'
+	foreman-installer -i
 	service apache2 restart
 	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
 	echo
 	echo "Foreman Default Credentials:"
-	echo "Username: admin"
-	echo "Password: changeme"
+	echo -e '\e[34mUsername\e[0m: admin'
+	echo -e '\e[34mPassword\e[0m: changeme'
 }
 function doAll()
 {
