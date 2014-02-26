@@ -1,7 +1,9 @@
 #!/bin/bash
 # Puppet Master Install with The Foreman 1.4 on Debian Wheezy 7.4
 # Author: John McCarthy
-# Date: February 26, 2014
+# <http://www.midactstech.blogspot.com> <https://www.github.com/Midacts>
+# Date: 26th of February, 2014
+# Version 1.1
 #
 # To God only wise, be glory through Jesus Christ forever. Amen.
 # Romans 16:27, I Corinthians 15:1-4
