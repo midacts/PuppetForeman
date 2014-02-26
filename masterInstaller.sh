@@ -1,7 +1,7 @@
 #!/bin/bash
-# Puppet Master Install with The Foreman 1.1 on Debian Wheezy
+# Puppet Master Install with The Foreman 1.4 on Debian Wheezy 7.4
 # Author: John McCarthy
-# Date: July 24, 2013
+# Date: February 26, 2014
 #
 # To God only wise, be glory through Jesus Christ forever. Amen.
 # Romans 16:27, I Corinthians 15:1-4
