@@ -6,8 +6,9 @@
 # Version 1.1
 #
 # To God only wise, be glory through Jesus Christ forever. Amen.
+#
 # Romans 16:27, I Corinthians 15:1-4
-#------------------------------------------------------
+#---------------------------------------------------------------
 ######## FUNCTIONS ########
 function setHostname()
 {
@@ -120,6 +121,7 @@ function doAll()
 	echo -e '   \e[01;37;42mWell done! You have completed your Puppet Master and Foreman Installation!\e[0m'
 	echo
 	echo -e '                  \e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
+	echo -e '  \e[30;01mCheckout similar material at midactstech.blogspot.com and github.com/Midacts\e[0m'
 	echo
 	echo
 	echo -e '                            \e[01;37m########################\e[0m'
