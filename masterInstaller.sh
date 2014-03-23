@@ -35,6 +35,8 @@ function enablePuppet()
 {
 	echo -e '\e[01;34m+++ Enabling Puppet Master Service...\e[0m'
 	puppet resource service puppetmaster ensure=running enable=true
+	sed -i 's/START=no/START=yes/g' /etc/default/puppet
+	sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
 	echo -e '\e[01;37;42mThe Puppet Master Service has been initiated!\e[0m'
 }
 function foremanRepos()
