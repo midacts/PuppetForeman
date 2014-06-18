@@ -123,11 +123,11 @@ function doAll()
 	# End of Script Congratulations, Farewell and Additional Information
 		clear
 		farewell=$(cat << EOZ
-		
+
   \e[01;37;42mWell done! You have completed your Puppet Master and Foreman Installation! \e[0m
 
                   \e[01;39mProceed to your Foreman web UI, https://fqdn\e[0m
-                         
+
                          \e[01;39mForeman Default Credentials:\e[0m
                                \e[34mUsername\e[0m\e[01;39m: admin\e[0m
                                \e[34mPassword\e[0m\e[01;39m: changeme\e[0m
@@ -137,8 +137,8 @@ function doAll()
                             \e[01;37m########################\e[0m
                             \e[01;37m#\e[0m \e[31mI Corinthians 15:1-4\e[0m \e[01;37m#\e[0m
                             \e[01;37m########################\e[0m
-                            
-                            
+
+
 EOZ
 )
 
@@ -166,7 +166,7 @@ EOA
 # Calls the welcome variable
 	echo -e "$welcome"
 
-# Calls the doAll function	
+# Calls the doAll function
 	case "$go" in
 		* )
 			doAll ;;
