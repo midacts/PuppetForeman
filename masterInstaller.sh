@@ -37,6 +37,13 @@ function installPuppet()
 	# Sets it so you the puppetmaster service starts on reboot
 		sed -i 's/START=no/START=yes/g' /etc/default/puppet
 		sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
+
+	# Makes changes for Puppet 3.6.2 deprecation warning
+		sed -i 's/\[main\]/&\n    # Puppet 3.6.2 Modification\n    environmentpath=$confdir\/environments\n/g' /etc/puppet/puppet.conf
+		sed -i '/\[development\]/d' /etc/puppet/puppet.conf
+		sed -i '/\[production\]/d' /etc/puppet/puppet.conf
+		sed -i '/modulepath/d' /etc/puppet/puppet.conf
+		sed -i '/config_version/d' /etc/puppet/puppet.conf
 		echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
