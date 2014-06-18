@@ -1,5 +1,5 @@
 #!/bin/bash
-# Puppet Master Install with The Foreman 1.4 on Debian Wheezy 7.4
+# Puppet Master Install with The Foreman 1.5 on Debian Wheezy 7.5
 # Author: John McCarthy
 # <http://www.midactstech.blogspot.com> <https://www.github.com/Midacts>
 # Date: 18th of June, 2014
@@ -72,7 +72,7 @@ function installForeman()
 	echo -e '\e[97mWe\e[0m'
 	sleep .5
 	echo -e '\e[01;97;42mG O  ! ! ! !\e[0m'
-	foreman-installer -i
+	foreman-installer -i -v
 	service apache2 restart
 	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
 	echo
