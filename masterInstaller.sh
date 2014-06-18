@@ -73,8 +73,16 @@ function installForeman()
 	sleep .5
 	echo -e '\e[01;97;42mG O  ! ! ! !\e[0m'
 	foreman-installer -i -v
-	service apache2 restart
+	sed -i 's/START=no/START=yes/g' /etc/default/foreman
+	echo "START=yes" /etc/default/foreman-proxy
+	service foreman restart
+	service foreman-proxy restart
 	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
+
+	echo
+	echo -e '\e[01;34m+++ Restarting the apache2 service...\e[0m'
+	service apache2 restart
+	echo -e '\e[01;37;42mThe apache2 service has been restarted!\e[0m'
 }
 function doAll()
 {
