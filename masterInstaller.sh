@@ -2,8 +2,8 @@
 # Puppet Master Install with The Foreman 1.4 on Debian Wheezy 7.4
 # Author: John McCarthy
 # <http://www.midactstech.blogspot.com> <https://www.github.com/Midacts>
-# Date: 13th of June, 2014
-# Version 1.2
+# Date: 18th of June, 2014
+# Version 1.3
 #
 # To God only wise, be glory through Jesus Christ forever. Amen.
 # Romans 16:27, I Corinthians 15:1-4
@@ -19,6 +19,7 @@ function setHostname()
 }
 function puppetRepos()
 {
+	echo
 	echo -e '\e[01;34m+++ Getting repositories...\e[0m'
 	wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
 	dpkg -i puppetlabs-release-wheezy.deb
@@ -27,12 +28,14 @@ function puppetRepos()
 }
 function installPuppet()
 {
+	echo
 	echo -e '\e[01;34m+++ Installing Puppet Master...\e[0m'
 	apt-get install puppetmaster -y
 	echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
 {
+	echo
 	echo -e '\e[01;34m+++ Enabling Puppet Master Service...\e[0m'
 	puppet resource service puppetmaster ensure=running enable=true
 	sed -i 's/START=no/START=yes/g' /etc/default/puppet
@@ -41,6 +44,7 @@ function enablePuppet()
 }
 function foremanRepos()
 {
+	echo
 	echo -e '\e[01;34m+++ Getting repositories...\e[0m'
 	echo "deb http://deb.theforeman.org/ wheezy 1.5" > /etc/apt/sources.list.d/foreman.list
 	echo "deb http://deb.theforeman.org/ plugins 1.5" >> /etc/apt/sources.list.d/foreman.list
@@ -50,6 +54,7 @@ function foremanRepos()
 }
 function installForeman()
 {
+	echo
 	echo -e '\e[01;34m+++ Installing The Foreman...\e[0m'
 	apt-get install foreman-installer -y
 	echo -e '\e[01;37;42mThe Foreman Installer has been downloaded!\e[0m'
@@ -136,6 +141,7 @@ function doAll()
 # Check privileges
 [ $(whoami) == "root" ] || die "You need to run this script as root."
 # Welcome to the script
+clear
 echo
 echo
 echo -e '             \e[01;37;42mWelcome to Midacts Mystery'\''s Puppet Master Installer!\e[0m'
