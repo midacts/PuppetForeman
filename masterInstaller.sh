@@ -11,123 +11,139 @@
 ######## FUNCTIONS ########
 function setHostname()
 {
-# /etc/hosts
-	IP=`hostname -I`
-	Hostname=`hostname`
-	FQDN=`hostname -f`
-	echo -e "127.0.0.1	localhost			localhosts.localdomain	$FQDN\n$IP	$FQDN	$Hostname		puppet" > /etc/hosts
+	# Edits the /etc/hosts file
+		IP=`hostname -I`
+		Hostname=`hostname`
+		FQDN=`hostname -f`
+		echo -e "127.0.0.1	localhost			localhosts.localdomain	$FQDN\n$IP	$FQDN	$Hostname		puppet" > /etc/hosts
 }
 function puppetRepos()
 {
-	echo
-	echo -e '\e[01;34m+++ Getting repositories...\e[0m'
-	wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
-	dpkg -i puppetlabs-release-wheezy.deb
-	apt-get update
-	echo -e '\e[01;37;42mThe Latest Puppet Repos have been acquired!\e[0m'
+	# Gets the latest puppet repos
+		echo
+		echo -e '\e[01;34m+++ Getting repositories...\e[0m'
+		wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
+		dpkg -i puppetlabs-release-wheezy.deb
+		apt-get update
+		echo -e '\e[01;37;42mThe Latest Puppet Repos have been acquired!\e[0m'
 }
 function installPuppet()
 {
-	echo
-	echo -e '\e[01;34m+++ Installing Puppet Master...\e[0m'
-	apt-get install puppetmaster -y
-	sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
-	echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
+	# Installs the latest version of puppetmaster
+		echo
+		echo -e '\e[01;34m+++ Installing Puppet Master...\e[0m'
+		apt-get install puppetmaster -y
+
+	# Sets it so you the puppetmaster service starts on reboot
+		sed -i 's/START=no/START=yes/g' /etc/default/puppet
+		sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
+		echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
 {
-	echo
-	echo -e '\e[01;34m+++ Enabling Puppet Master Service...\e[0m'
-	puppet resource service puppetmaster ensure=running enable=true
-	sed -i 's/START=no/START=yes/g' /etc/default/puppet
-	sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
-	echo -e '\e[01;37;42mThe Puppet Master Service has been initiated!\e[0m'
+	# Enables the puppetmaster service to be set to ensure it is running
+		echo
+		echo -e '\e[01;34m+++ Enabling Puppet Master Service...\e[0m'
+		puppet resource service puppetmaster ensure=running enable=true
+		echo -e '\e[01;37;42mThe Puppet Master Service has been initiated!\e[0m'
 }
 function foremanRepos()
 {
-	echo
-	echo -e '\e[01;34m+++ Getting repositories...\e[0m'
-	echo "deb http://deb.theforeman.org/ wheezy 1.5" > /etc/apt/sources.list.d/foreman.list
-	echo "deb http://deb.theforeman.org/ plugins 1.5" >> /etc/apt/sources.list.d/foreman.list
-	wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
-	apt-get update
-	echo -e '\e[01;37;42mThe Latest Foreman Repos have been acquired!\e[0m'
+	# Gets the latest foreman repos
+		echo
+		echo -e '\e[01;34m+++ Getting repositories...\e[0m'
+		echo "deb http://deb.theforeman.org/ wheezy 1.5" > /etc/apt/sources.list.d/foreman.list
+		echo "deb http://deb.theforeman.org/ plugins 1.5" >> /etc/apt/sources.list.d/foreman.list
+		wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
+		apt-get update
+		echo -e '\e[01;37;42mThe Latest Foreman Repos have been acquired!\e[0m'
 }
 function installForeman()
 {
-	echo
-	echo -e '\e[01;34m+++ Installing The Foreman...\e[0m'
-	apt-get install foreman-installer -y
-	echo -e '\e[01;37;42mThe Foreman Installer has been downloaded!\e[0m'
-	echo
-	echo -e '\e[01;34mInitializing The Foreman Installer...\e[0m'
-	echo "-------------------------------------"
-	sleep 1
-	echo -e '\e[33mMake any additional changes you would like\e[0m'
-	sleep 1
-	echo -e '\e[33mSelect option "20" and hit ENTER to run the install\e[0m'
-	sleep 1
-	echo 
-	echo -e '\e[97mHere\e[0m'
-	sleep .5
-	echo -e '\e[97mWe\e[0m'
-	sleep .5
-	echo -e '\e[01;97;42mG O  ! ! ! !\e[0m'
-	foreman-installer -i -v
-	sed -i 's/START=no/START=yes/g' /etc/default/foreman
-	echo "START=yes" /etc/default/foreman-proxy
-	service foreman restart
-	service foreman-proxy restart
-	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
+	# Downloads the foreman-installer
+		echo
+		echo -e '\e[01;34m+++ Installing The Foreman...\e[0m'
+		apt-get install foreman-installer -y
+		echo -e '\e[01;37;42mThe Foreman Installer has been downloaded!\e[0m'
 
-	echo
-	echo -e '\e[01;34m+++ Restarting the apache2 service...\e[0m'
-	service apache2 restart
-	echo -e '\e[01;37;42mThe apache2 service has been restarted!\e[0m'
+	# Stars foreman-installer
+		echo
+		echo -e '\e[01;34mInitializing The Foreman Installer...\e[0m'
+		echo "-------------------------------------"
+		sleep 1
+		echo -e '\e[33mMake any additional changes you would like\e[0m'
+		sleep 1
+		echo -e '\e[33mSelect option "20" and hit ENTER to run the install\e[0m'
+		sleep 1
+		echo 
+		echo -e '\e[97mHere\e[0m'
+		sleep .5
+		echo -e '\e[97mWe\e[0m'
+		sleep .5
+		echo -e '\e[01;97;42mG O  ! ! ! !\e[0m'
+		foreman-installer -i -v
+
+	# Sets foreman and foreman-proxy to start on boot and restarts both services
+		sed -i 's/START=no/START=yes/g' /etc/default/foreman
+		echo "START=yes" /etc/default/foreman-proxy
+		service foreman restart
+		service foreman-proxy restart
+		echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
+
+	# Restarts the apache2 service
+		echo
+		echo -e '\e[01;34m+++ Restarting the apache2 service...\e[0m'
+		service apache2 restart
+		echo -e '\e[01;37;42mThe apache2 service has been restarted!\e[0m'
 }
 function doAll()
 {
-	echo
-	echo -e "\e[33m=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)\e[0m"
-	read yesno
-	if [ "$yesno" = "y" ]; then
-		setHostname
-	fi
+	# Calls the setHostname function
+		echo
+		echo -e "\e[33m=== Set Machine's Hostname for Puppet Runs ? [RECOMMENDED] (y/n)\e[0m"
+		read yesno
+		if [ "$yesno" = "y" ]; then
+			setHostname
+		fi
 
-	echo
-	echo -e "\e[33m=== Get Latest Puppet Repos ? (y/n)\e[0m"
-	read yesno
-	if [ "$yesno" = "y" ]; then
-		puppetRepos
-	fi
+	# Calls the puppetRepos function
+		echo
+		echo -e "\e[33m=== Get Latest Puppet Repos ? (y/n)\e[0m"
+		read yesno
+		if [ "$yesno" = "y" ]; then
+			puppetRepos
+		fi
 
-	echo
-	echo -e "\e[33m=== Install Puppet Master ? (y/n)\e[0m"
-	read yesno
-	if [ "$yesno" = "y" ]; then
-		installPuppet
-	fi
+	# Calls the installPuppet function
+		echo
+		echo -e "\e[33m=== Install Puppet Master ? (y/n)\e[0m"
+		read yesno
+		if [ "$yesno" = "y" ]; then
+			installPuppet
+		fi
 
-	echo
-	echo -e "\e[33m=== Enable Puppet Master Service ? (y/n)\e[0m"
-	read yesno
-	if [ "$yesno" = "y" ]; then
-		enablePuppet
-	fi
+	# Calls the enablePuppet function
+		echo
+		echo -e "\e[33m=== Enable Puppet Master Service ? (y/n)\e[0m"
+		read yesno
+		if [ "$yesno" = "y" ]; then
+			enablePuppet
+		fi
+	# Calls the foremanRepos function
+		echo
+		echo -e "\e[33m=== Get Latest Foreman Repos ? (y/n)\e[0m"
+		read yesno
+		if [ "$yesno" = "y" ]; then
+			foremanRepos
+		fi
 
-	echo
-	echo -e "\e[33m=== Get Latest Foreman Repos ? (y/n)\e[0m"
-	read yesno
-	if [ "$yesno" = "y" ]; then
-		foremanRepos
-	fi
-
-	echo
-	echo -e "\e[33m=== Install The Foreman ? (y/n)\e[0m"
-	read yesno
-	if [ "$yesno" = "y" ]; then
-		installForeman
-	fi
+	# Calls the installForeman function
+		echo
+		echo -e "\e[33m=== Install The Foreman ? (y/n)\e[0m"
+		read yesno
+		if [ "$yesno" = "y" ]; then
+			installForeman
+		fi
 	
 	# End of Script Congratulations, Farewell and Additional Information
 		clear
@@ -151,7 +167,7 @@ function doAll()
 EOZ
 )
 
-		#Calls the End of Script variable
+	#Calls the End of Script variable
 		echo -e "$farewell"
 		echo
 		echo
