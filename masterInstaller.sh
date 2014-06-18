@@ -75,10 +75,6 @@ function installForeman()
 	foreman-installer -i -v
 	service apache2 restart
 	echo -e '\e[01;37;42mThe Foreman has been installed!\e[0m'
-	echo
-	echo "Foreman Default Credentials:"
-	echo -e '\e[34mUsername\e[0m: admin'
-	echo -e '\e[34mPassword\e[0m: changeme'
 }
 function doAll()
 {
@@ -123,45 +119,57 @@ function doAll()
 	if [ "$yesno" = "y" ]; then
 		installForeman
 	fi
-	echo
-	echo
-	echo -e '   \e[01;37;42mWell done! You have completed your Puppet Master and Foreman Installation!\e[0m'
-	echo
-	echo -e '                  \e[01;37;42mProceed to your Foreman web UI, http://fqdn\e[0m'
-	echo -e '  \e[30;01mCheckout similar material at midactstech.blogspot.com and github.com/Midacts\e[0m'
-	echo
-	echo
-	echo -e '                            \e[01;37m########################\e[0m'
-	echo -e '                            \e[01;37m#\e[0m \e[31mI Corinthians 15:1-4\e[0m \e[01;37m#\e[0m'
-	echo -e '                            \e[01;37m########################\e[0m'
-	echo
-	echo
-	exit 0
-}
-# Check privileges
-[ $(whoami) == "root" ] || die "You need to run this script as root."
-# Welcome to the script
-clear
-echo
-echo
-echo -e '             \e[01;37;42mWelcome to Midacts Mystery'\''s Puppet Master Installer!\e[0m'
-echo
-echo
-case "$go" in
-	hostname)
-		setHostname ;;
-	repos)
-		puppetRepos ;;
-	puppet)
-		installPuppet ;;
-	enablePuppet)
-		enablePuppet ;;
-	foremanRepos)
-		foremanRepos ;;
-	Foreman)
-		installForeman ;;
-	* )
-			doAll ;;
-esac
+	
+	# End of Script Congratulations, Farewell and Additional Information
+		clear
+		farewell=$(cat << EOZ
+		
+  \e[01;37;42mWell done! You have completed your Puppet Master and Foreman Installation! \e[0m
 
-exit 0
+                  \e[01;39mProceed to your Foreman web UI, https://fqdn\e[0m
+                         
+                         \e[01;39mForeman Default Credentials:\e[0m
+                               \e[34mUsername\e[0m\e[01;39m: admin\e[0m
+                               \e[34mPassword\e[0m\e[01;39m: changeme\e[0m
+
+  \e[30;01mCheckout similar material at midactstech.blogspot.com and github.com/Midacts\e[0m
+
+                            \e[01;37m########################\e[0m
+                            \e[01;37m#\e[0m \e[31mI Corinthians 15:1-4\e[0m \e[01;37m#\e[0m
+                            \e[01;37m########################\e[0m
+                            
+                            
+EOZ
+)
+
+		#Calls the End of Script variable
+		echo -e "$farewell"
+		echo
+		echo
+		exit 0
+}
+
+# Check privileges
+	[ $(whoami) == "root" ] || die "You need to run this script as root."
+	
+# Welcome to the script
+	clear
+	welcome=$(cat << EOA
+
+
+             \e[01;37;42mWelcome to Midacts Mystery's Puppet Master Installer!\e[0m
+
+
+EOA
+)
+
+# Calls the welcome variable
+	echo -e "$welcome"
+
+# Calls the doAll function	
+	case "$go" in
+		* )
+			doAll ;;
+	esac
+
+	exit 0
