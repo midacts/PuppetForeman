@@ -190,6 +190,7 @@ EOZ
 
 
              \e[01;37;42mWelcome to Midacts Mystery's Puppet Master Installer!\e[0m
+             
 
 
 EOA
