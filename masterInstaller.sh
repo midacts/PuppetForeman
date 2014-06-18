@@ -81,7 +81,7 @@ function installForeman()
 
 	# Sets foreman and foreman-proxy services to start on boot
 		sed -i 's/START=no/START=yes/g' /etc/default/foreman
-		echo "START=yes" /etc/default/foreman-proxy
+		echo "START=yes" >> /etc/default/foreman-proxy
 
 	# Sets it so you the puppetmaster and puppet services starts on boot
 		sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
