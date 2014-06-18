@@ -31,6 +31,7 @@ function installPuppet()
 	echo
 	echo -e '\e[01;34m+++ Installing Puppet Master...\e[0m'
 	apt-get install puppetmaster -y
+	sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
 	echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
