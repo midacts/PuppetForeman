@@ -15,7 +15,7 @@ function setHostname()
 	IP=`hostname -I`
 	Hostname=`hostname`
 	FQDN=`hostname -f`
-	echo -e "127.0.0.1	localhost	localhosts.localdomain	$FQDN\n$IP	$FQDN	$Hostname		puppet" > /etc/hosts
+	echo -e "127.0.0.1	localhost			localhosts.localdomain	$FQDN\n$IP	$FQDN	$Hostname		puppet" > /etc/hosts
 }
 function puppetRepos()
 {
