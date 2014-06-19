@@ -88,7 +88,7 @@ function installForeman()
 		sed -i 's/START=no/START=yes/g' /etc/default/puppet
 
 	# Makes changes for Puppet 3.6.2 deprecation warning
-		sed -i 's/\[main\]/&\n    # Puppet 3.6.2 Modification\n    environmentpath=$confdir\/environments\n/g' /etc/puppet/puppet.conf
+		sed -i '0,/\[main\]/s/\[main\]/&\n    # Puppet 3.6.2 Modification\n    environmentpath=$confdir\/environments\n/g' /etc/puppet/puppet.conf
 		sed -i '/\[development\]/d' /etc/puppet/puppet.conf
 		sed -i '/\[production\]/d' /etc/puppet/puppet.conf
 		sed -i '/modulepath/d' /etc/puppet/puppet.conf
