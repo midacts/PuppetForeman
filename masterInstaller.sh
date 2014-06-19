@@ -84,15 +84,14 @@ function installForeman()
 		echo "START=yes" >> /etc/default/foreman-proxy
 
 	# Sets it so you the puppetmaster and puppet services starts on boot
-		sed -i 's/START=no/START=yes/g' /etc/default/puppetmaster
 		sed -i 's/START=no/START=yes/g' /etc/default/puppet
 
 	# Makes changes for Puppet 3.6.2 deprecation warning
-		sed -i '0,/\[main\]/s/\[main\]/&\n    # Puppet 3.6.2 Modification\n    environmentpath=$confdir\/environments\n/g' /etc/puppet/puppet.conf
-		sed -i '/\[development\]/d' /etc/puppet/puppet.conf
-		sed -i '/\[production\]/d' /etc/puppet/puppet.conf
-		sed -i '/modulepath/d' /etc/puppet/puppet.conf
-		sed -i '/config_version/d' /etc/puppet/puppet.conf
+		#sed -i '0,/\[main\]/s/\[main\]/&\n    # Puppet 3.6.2 Modification\n    environmentpath=$confdir\/environments\n/g' /etc/puppet/puppet.conf
+		#sed -i '/\[development\]/d' /etc/puppet/puppet.conf
+		#sed -i '/\[production\]/d' /etc/puppet/puppet.conf
+		#sed -i '/modulepath/d' /etc/puppet/puppet.conf
+		#sed -i '/config_version/d' /etc/puppet/puppet.conf
 
 	# Restarts the foreman and foreman-proxy services
 		service foreman restart
