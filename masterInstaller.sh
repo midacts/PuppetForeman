@@ -50,7 +50,7 @@ function foremanRepos()
 		echo -e '\e[01;34m+++ Getting repositories...\e[0m'
 		echo "deb http://deb.theforeman.org/ wheezy 1.5" > /etc/apt/sources.list.d/foreman.list
 		echo "deb http://deb.theforeman.org/ plugins 1.5" >> /etc/apt/sources.list.d/foreman.list
-		wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
+		wget -q http://deb.theforeman.org/pubkey.gpg -O- | apt-key add -
 		apt-get update
 		echo -e '\e[01;37;42mThe Latest Foreman Repos have been acquired!\e[0m'
 }
