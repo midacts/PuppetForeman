@@ -71,7 +71,7 @@ function installForeman()
 		sleep 1
 		echo -e '\e[33mSelect option "20" and hit ENTER to run the install\e[0m'
 		sleep 1
-		echo 
+		echo
 		echo -e '\e[97mHere\e[0m'
 		sleep .5
 		echo -e '\e[97mWe\e[0m'
@@ -152,7 +152,7 @@ function doAll()
 		if [ "$yesno" = "y" ]; then
 			installForeman
 		fi
-	
+
 	# End of Script Congratulations, Farewell and Additional Information
 		clear
 		farewell=$(cat << EOZ
@@ -184,7 +184,7 @@ EOZ
 
 # Check privileges
 	[ $(whoami) == "root" ] || die "You need to run this script as root."
-	
+
 # Welcome to the script
 	clear
 	welcome=$(cat << EOA
