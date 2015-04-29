@@ -2,8 +2,8 @@
 # Puppet Master Install with The Foreman 1.5 on Debian Wheezy 7.5
 # Author: John McCarthy
 # <http://www.midactstech.blogspot.com> <https://www.github.com/Midacts>
-# Date: 18th of June, 2014
-# Version 1.3
+# Date: 28th of April, 2015
+# Version 1.4
 #
 # To God only wise, be glory through Jesus Christ forever. Amen.
 # Romans 16:27, I Corinthians 15:1-4
@@ -48,8 +48,8 @@ function foremanRepos()
 	# Gets the latest foreman repos
 		echo
 		echo -e '\e[01;34m+++ Getting repositories...\e[0m'
-		echo "deb http://deb.theforeman.org/ wheezy 1.8" > /etc/apt/sources.list.d/foreman.list
-		echo "deb http://deb.theforeman.org/ plugins 1.8" >> /etc/apt/sources.list.d/foreman.list
+		echo "deb http://deb.theforeman.org/ wheezy 1.7" > /etc/apt/sources.list.d/foreman.list
+		echo "deb http://deb.theforeman.org/ plugins 1.7" >> /etc/apt/sources.list.d/foreman.list
 		wget -q http://deb.theforeman.org/pubkey.gpg -O- | apt-key add -
 		apt-get update
 		echo -e '\e[01;37;42mThe Latest Foreman Repos have been acquired!\e[0m'
@@ -69,7 +69,7 @@ function installForeman()
 		sleep 1
 		echo -e '\e[33mMake any additional changes you would like\e[0m'
 		sleep 1
-		echo -e '\e[33mSelect option "20" and hit ENTER to run the install\e[0m'
+		echo -e '\e[33mSelect option "24" and hit ENTER to run the install\e[0m'
 		sleep 1
 		echo
 		echo -e '\e[97mHere\e[0m'
