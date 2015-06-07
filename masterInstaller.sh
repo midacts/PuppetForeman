@@ -32,7 +32,7 @@ function installPuppet()
 	# Installs the latest version of puppetmaster
 		echo
 		echo -e '\e[01;34m+++ Installing Puppet Master...\e[0m'
-		apt-get install puppetmaster -y
+		apt-get install puppetmaster-passenger -y
 		echo -e '\e[01;37;42mThe Puppet Master has been installed!\e[0m'
 }
 function enablePuppet()
